@@ -2,36 +2,38 @@ package com.springbook.biz.menu;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class MenuServiceImpl implements MenuService{
+	
+	@Autowired
+	private MenuDAO menuDAO;
 
 	@Override
 	public void insertMenu(MenuVO vo) {
-		// TODO Auto-generated method stub
-		
+		menuDAO.insertMenu(vo);
 	}
 
 	@Override
 	public void updateMenu(MenuVO vo) {
-		// TODO Auto-generated method stub
-		
+		menuDAO.updateMenu(vo);
 	}
 
 	@Override
 	public void deleteMenu(MenuVO vo) {
-		// TODO Auto-generated method stub
-		
+		menuDAO.deleteMenu(vo);
 	}
 
 	@Override
 	public MenuVO getMenu(MenuVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return menuDAO.getMenu(vo);
 	}
 
 	@Override
 	public List<MenuVO> getMenuList(MenuVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return menuDAO.getMenuList(vo);
 	}
 
 }

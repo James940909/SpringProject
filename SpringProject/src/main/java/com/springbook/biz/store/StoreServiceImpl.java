@@ -2,36 +2,38 @@ package com.springbook.biz.store;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class StoreServiceImpl implements StoreService{
+	
+	@Autowired
+	private StoreDAO storeDAO;
 
 	@Override
 	public void insertStore(StoreVO vo) {
-		// TODO Auto-generated method stub
-		
+		storeDAO.insertStore(vo);
 	}
 
 	@Override
 	public void updateStore(StoreVO vo) {
-		// TODO Auto-generated method stub
-		
+		storeDAO.updateStore(vo);
 	}
 
 	@Override
 	public void deleteStore(StoreVO vo) {
-		// TODO Auto-generated method stub
-		
+		storeDAO.deleteStore(vo);
 	}
 
 	@Override
 	public StoreVO getStore(StoreVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return storeDAO.getStore(vo);
 	}
 
 	@Override
 	public List<StoreVO> getStoreList(StoreVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return storeDAO.getStoreList(vo);
 	}
 
 }
