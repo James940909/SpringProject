@@ -1,8 +1,8 @@
 package com.springbook.biz.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.springbook.biz.menu.MenuDAO;
 import com.springbook.biz.menu.MenuVO;
@@ -11,27 +11,41 @@ import com.springbook.biz.menu.MenuVO;
 public class MenuController {
 	
 	@RequestMapping(value="/insertMenu.do")
-	public String insertMenu(MenuVO vo, MenuDAO menuAO) {
-		return null;
+	public String insertMenu(MenuVO vo, MenuDAO menuDAO) {
+		System.out.println("메뉴 등록 처리 시작");
+		menuDAO.insertMenu(vo);
+		return "menuPage.do";
 	}
 	
 	@RequestMapping(value="/updateMenu.do")
 	public String updateMenu(MenuVO vo, MenuDAO menuDAO) {
-		return null;
+		System.out.println("메뉴 수정 처리 시작");
+		menuDAO.updateMenu(vo);
+		return "getMenu.jsp";
 	}
 	
 	@RequestMapping(value="/deleteMenu.do")
 	public String deleteMenu(MenuVO vo, MenuDAO menuDAO) {
-		return null;
+		System.out.println("메뉴 삭제 처리 시작");
+		menuDAO.deleteMenu(vo);
+		return "menuPage.do";
 	}
 	
 	@RequestMapping(value="/getMenu.do")
-	public ModelAndView getMenu(MenuVO vo, MenuDAO menuDAO, ModelAndView mav) {
-		return null;
+	public String getMenu(MenuVO vo, MenuDAO menuDAO, Model model) {
+		System.out.println("메뉴 상세보기 처리 시작");
+		
+		model.addAttribute("menu", menuDAO.getMenu(vo));
+		
+		return "getMenu.jsp";
 	}
 	
 	@RequestMapping(value="/getMenuList.do")
-	public ModelAndView getMenuList(MenuVO vo, MenuDAO menuDAO, ModelAndView mav) {
-		return null;
+	public String getMenuList(MenuVO vo, MenuDAO menuDAO, Model model) {
+		System.out.println("메뉴 모두 보기 처리 시작");
+		
+		model.addAttribute("menuList", menuDAO.getMenuList(vo));
+		
+		return "menuPage.do";
 	}
 }

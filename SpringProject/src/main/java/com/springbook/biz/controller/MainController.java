@@ -69,4 +69,10 @@ public class MainController {
 		return "storePage.jsp";
 	}
 	
+	// 메뉴페이지
+	@RequestMapping(value = "/menuPage.do")
+	public String menuPage() {
+		return "menuPage.jsp";
+	}
+	
 }
