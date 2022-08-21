@@ -48,7 +48,7 @@ public class MainController {
 	// 메인페이지
 	@RequestMapping(value = "/mainPage.do")
 	public String mainPage() {
-		return "mainPage.jsp";
+		return "index.jsp";
 	}
 	
 	// 리뷰페이지

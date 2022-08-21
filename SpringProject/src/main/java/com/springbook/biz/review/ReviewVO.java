@@ -1,6 +1,5 @@
 package com.springbook.biz.review;
 
-import java.sql.Date;
 
 public class ReviewVO {
 	
@@ -8,9 +7,8 @@ public class ReviewVO {
 	private String reviewWriter;
 	private float reviewScore;
 	private String reviewContent;
-	private Date reviewDate;
+	private String reviewDate;
 	private int store_Num;
-	
 	public int getReviewNum() {
 		return reviewNum;
 	}
@@ -35,10 +33,10 @@ public class ReviewVO {
 	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
 	}
-	public Date getReviewDate() {
+	public String getReviewDate() {
 		return reviewDate;
 	}
-	public void setReviewDate(Date reviewDate) {
+	public void setReviewDate(String reviewDate) {
 		this.reviewDate = reviewDate;
 	}
 	public int getStore_Num() {
@@ -47,11 +45,12 @@ public class ReviewVO {
 	public void setStore_Num(int store_Num) {
 		this.store_Num = store_Num;
 	}
-	
 	@Override
 	public String toString() {
 		return "ReviewVO [reviewNum=" + reviewNum + ", reviewWriter=" + reviewWriter + ", reviewScore=" + reviewScore
 				+ ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", store_Num=" + store_Num + "]";
 	}
+	
+	
 	
 }

@@ -1,19 +1,24 @@
 package com.springbook.biz.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.menu.MenuDAO;
+import com.springbook.biz.menu.MenuService;
 import com.springbook.biz.menu.MenuVO;
 
 @Controller
 public class MenuController {
 	
+	@Autowired
+	private MenuService menuService;
+	
 	@RequestMapping(value="/insertMenu.do")
-	public String insertMenu(MenuVO vo, MenuDAO menuDAO) {
+	public String insertMenu(MenuVO vo) {
 		System.out.println("메뉴 등록 처리 시작");
-		menuDAO.insertMenu(vo);
+		menuService.insertMenu(vo);
 		return "menuPage.do";
 	}
 	

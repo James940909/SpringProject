@@ -1,6 +1,5 @@
 package com.springbook.biz.store;
 
-import java.sql.Date;
 
 public class StoreVO {
 	
@@ -11,8 +10,7 @@ public class StoreVO {
 	private String storeEmail;
 	private String storePhone;
 	private String storeAddress;
-	private Date signUpDate;
-	
+	private String signUpDate;
 	public int getStoreNum() {
 		return storeNum;
 	}
@@ -55,10 +53,10 @@ public class StoreVO {
 	public void setStoreAddress(String storeAddress) {
 		this.storeAddress = storeAddress;
 	}
-	public Date getSignUpDate() {
+	public String getSignUpDate() {
 		return signUpDate;
 	}
-	public void setSignUpDate(Date signUpDate) {
+	public void setSignUpDate(String signUpDate) {
 		this.signUpDate = signUpDate;
 	}
 	@Override
@@ -67,6 +65,8 @@ public class StoreVO {
 				+ storeName + ", storeEmail=" + storeEmail + ", storePhone=" + storePhone + ", storeAddress="
 				+ storeAddress + ", signUpDate=" + signUpDate + "]";
 	}
+	
+	
 	
 	
 }

@@ -15,7 +15,7 @@ public class StoreDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate; 
 	
-	private final String Store_Insert = "INSERT INTO STORE(storeId, storePw, storeName, storeEmail, storePhone, storeAddress) VALUES(?,?,?,?,?,?)";
+	private final String Store_Insert = "INSERT INTO STORE(storeNum, storeId, storePw, storeName, storeEmail, storePhone, storeAddress, signUpDate) VALUES(?,?,?,?,?,?,?,?)";
 	private final String Store_Update= "UPDATE STORE SET storePw=?, storeName=?, storeEmail=?, storePhone=?, storeAddress=? WHERE storeNum=?";
 	private final String Store_Delete= "DELETE STORE WHERE storeNum=?";
 	private final String Store_Get= "SELECT * FROM STORE WHERE storeNum=?";
@@ -23,7 +23,7 @@ public class StoreDAO {
 	
 	
 	public void insertStore(StoreVO vo) {
-		Object[] args = { vo.getStoreId(), vo.getStorePw(), vo.getStoreName(), vo.getStoreEmail(), vo.getStorePhone(), vo.getStoreAddress() };
+		Object[] args = {vo.getStoreNum(),vo.getStoreId(),vo.getStorePw(),vo.getStoreName(),vo.getStoreEmail(),vo.getStorePhone(),vo.getStoreAddress(),vo.getSignUpDate()};
 		jdbcTemplate.update(Store_Insert, args);
 	}
 	
@@ -59,7 +59,7 @@ class StoreRowMapper implements RowMapper<StoreVO> {
 		store.setStoreEmail(rs.getString("storeEmail"));
 		store.setStorePhone(rs.getString("storePhone"));
 		store.setStoreAddress(rs.getString("storeAddress"));
-		store.setSignUpDate(rs.getDate("signUpDate"));
+		store.setSignUpDate(rs.getString("signUpDate"));
 		return store;
 	}
 	

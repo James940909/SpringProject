@@ -56,7 +56,7 @@ class BoardRowMapper implements RowMapper<BoardVO> {
 		board.setBoardTitle(rs.getString("boardTitle"));
 		board.setBoardWriter(rs.getString("boardWriter"));
 		board.setBoardContent(rs.getString("boardContent"));
-		board.setBoardDate(rs.getDate("boardDate"));
+		board.setBoardDate(rs.getString("boardDate"));
 		board.setBoardCnt(rs.getInt("boardCnt"));
 		board.setStore_Num(rs.getInt("store_Num"));
 		return board;

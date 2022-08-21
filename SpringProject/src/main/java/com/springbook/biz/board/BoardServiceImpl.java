@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("boardService")
 public class BoardServiceImpl implements BoardService{
 	
 	@Autowired

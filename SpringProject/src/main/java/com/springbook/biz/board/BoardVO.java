@@ -1,16 +1,14 @@
 package com.springbook.biz.board;
 
-import java.sql.Date;
 
 public class BoardVO {
 	private int boardNum;
 	private String boardTitle;
 	private String boardWriter;
 	private String boardContent;
-	private Date boardDate;
+	private String boardDate;
 	private int boardCnt;
 	private int store_Num;
-	
 	public int getBoardNum() {
 		return boardNum;
 	}
@@ -35,10 +33,10 @@ public class BoardVO {
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
 	}
-	public Date getBoardDate() {
+	public String getBoardDate() {
 		return boardDate;
 	}
-	public void setBoardDate(Date boardDate) {
+	public void setBoardDate(String boardDate) {
 		this.boardDate = boardDate;
 	}
 	public int getBoardCnt() {
@@ -53,13 +51,14 @@ public class BoardVO {
 	public void setStore_Num(int store_Num) {
 		this.store_Num = store_Num;
 	}
-	
 	@Override
 	public String toString() {
 		return "BoardVO [boardNum=" + boardNum + ", boardTitle=" + boardTitle + ", boardWriter=" + boardWriter
 				+ ", boardContent=" + boardContent + ", boardDate=" + boardDate + ", boardCnt=" + boardCnt
 				+ ", store_Num=" + store_Num + "]";
 	}
+	
+	
 	
 	
 }

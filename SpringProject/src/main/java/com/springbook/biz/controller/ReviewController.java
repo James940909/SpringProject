@@ -1,19 +1,24 @@
 package com.springbook.biz.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.review.ReviewDAO;
+import com.springbook.biz.review.ReviewService;
 import com.springbook.biz.review.ReviewVO;
 
 @Controller
 public class ReviewController {
 	
+	@Autowired
+	private ReviewService reviewService;
+	
 	@RequestMapping(value="/insertReview.do")
-	public String insertReview(ReviewVO vo, ReviewDAO reviewDAO) {
+	public String insertReview(ReviewVO vo) {
 		System.out.println("府轰 累己 贸府 矫累");
-		reviewDAO.insertReview(vo);
+		reviewService.insertReview(vo);
 		return "reviewPage.do";
 	}
 	

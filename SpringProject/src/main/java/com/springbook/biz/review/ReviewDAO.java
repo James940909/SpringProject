@@ -56,7 +56,7 @@ class ReviewRowMapper implements RowMapper<ReviewVO> {
 		review.setReviewWriter(rs.getString("reviewWriter"));
 		review.setReviewScore(rs.getFloat("reviewScore"));
 		review.setReviewContent(rs.getString("reviewContent"));
-		review.setReviewDate(rs.getDate("reviewDate"));
+		review.setReviewDate(rs.getString("reviewDate"));
 		review.setStore_Num(rs.getInt("store_Num"));
 		return review;
 	}

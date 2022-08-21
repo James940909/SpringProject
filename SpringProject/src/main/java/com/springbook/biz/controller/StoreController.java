@@ -1,20 +1,38 @@
 package com.springbook.biz.controller;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.store.StoreDAO;
+import com.springbook.biz.store.StoreService;
 import com.springbook.biz.store.StoreVO;
 
 @Controller
 public class StoreController {
 	
+	@Autowired
+	private StoreService storeService;
+	
 	// 회원가입
 	@RequestMapping(value="/insertStore.do")
-	public String insertStore(StoreVO vo, StoreDAO storeDAO) {
+	public String insertStore(StoreVO vo) {
 		System.out.println("회원가입 처리 시작");
-		storeDAO.insertStore(vo);
+		
+		Date date = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String now = format.format(date);
+		
+		vo.setSignUpDate(now);
+		
+		System.out.println(vo.toString());
+		storeService.insertStore(vo);
+		System.out.println("test로깅");
 		return "mainPage.do";
 	}
 	

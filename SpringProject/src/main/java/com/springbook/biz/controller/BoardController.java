@@ -1,19 +1,24 @@
 package com.springbook.biz.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.board.BoardDAO;
+import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 
 @Controller
 public class BoardController {
 	
+	@Autowired
+	private BoardService boardService;
+	
 	@RequestMapping(value="/insertBoard.do")
-	public String insertBoard(BoardVO vo, BoardDAO boardDAO) {
+	public String insertBoard(BoardVO vo) {
 		System.out.println("게시글 등록 처리 시작");
-		boardDAO.insertBoard(vo);
+		boardService.insertBoard(vo);
 		return "boardPage.do";
 	}
 	
