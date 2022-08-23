@@ -15,6 +15,7 @@ public class ReviewDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate; 
 	
+	// ±âº» CRUD
 	private final String Review_Insert = "INSERT INTO REVIEW(reviewWriter, reviewScore, reviewContent) VALUES(?,?,?)";
 	private final String Review_Update= "UPDATE REVIEW SET reviewWriter=?, reviewScore=?, reviewContent=? WHERE reviewNum=?";
 	private final String Review_Delete= "DELETE REVIEW WHERE reviewNum=?";

@@ -44,15 +44,15 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">로 그 인</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" action="login.do" method="post">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                            <input type="text" class="form-control form-control-user"
+                                                name="storeId" aria-describedby="emailHelp"
                                                 placeholder="Enter Your Id...">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                name="storePw" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -60,9 +60,7 @@
                                                 <label class="custom-control-label" for="customCheck">아이디 저장</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                        <input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
                                     </form>
                                     <hr>
                                     <div class="text-center">

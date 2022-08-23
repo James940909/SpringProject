@@ -27,12 +27,8 @@ public class StoreController {
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String now = format.format(date);
-		
 		vo.setSignUpDate(now);
-		
-		System.out.println(vo.toString());
 		storeService.insertStore(vo);
-		System.out.println("test·Î±ë");
 		return "mainPage.do";
 	}
 	

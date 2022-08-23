@@ -15,6 +15,7 @@ public class BoardDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate; 
 	
+	// ±âº» CRUD
 	private final String Board_Insert = "INSERT INTO BOARD(boardTitle, boardWriter, boardContent) VALUES(?,?,?)";
 	private final String Board_Update= "UPDATE BOARD SET boardTitle=?, BoardWriter=?, boardContent=? WHERE boardNum=?";
 	private final String Board_Delete= "DELETE BOARD WHERE boardNum=?";

@@ -35,5 +35,9 @@ public class StoreServiceImpl implements StoreService{
 	public List<StoreVO> getStoreList(StoreVO vo) {
 		return storeDAO.getStoreList(vo);
 	}
+	
+	public StoreVO loginStore(StoreVO vo) {
+		return storeDAO.loginStore(vo);
+	}
 
 }

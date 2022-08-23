@@ -15,15 +15,19 @@ public class StoreDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate; 
 	
+	// 기본 CRUD
 	private final String Store_Insert = "INSERT INTO STORE(storeNum, storeId, storePw, storeName, storeEmail, storePhone, storeAddress, signUpDate) VALUES(?,?,?,?,?,?,?,?)";
 	private final String Store_Update= "UPDATE STORE SET storePw=?, storeName=?, storeEmail=?, storePhone=?, storeAddress=? WHERE storeNum=?";
 	private final String Store_Delete= "DELETE STORE WHERE storeNum=?";
 	private final String Store_Get= "SELECT * FROM STORE WHERE storeNum=?";
 	private final String Store_List= "SELECT * FROM STORE ORDER BY storeNum DESC";
 	
+	//로그인 쿼리
+	private final String Store_Login= "SELECT * FROM STORE WHERE storeId=? and storePw=?";
+	
 	
 	public void insertStore(StoreVO vo) {
-		Object[] args = {vo.getStoreNum(),vo.getStoreId(),vo.getStorePw(),vo.getStoreName(),vo.getStoreEmail(),vo.getStorePhone(),vo.getStoreAddress(),vo.getSignUpDate()};
+		Object[] args = { vo.getStoreNum(), vo.getStoreId(), vo.getStorePw(), vo.getStoreName(), vo.getStoreEmail(), vo.getStorePhone(), vo.getStoreAddress(), vo.getSignUpDate() };
 		jdbcTemplate.update(Store_Insert, args);
 	}
 	
@@ -38,12 +42,23 @@ public class StoreDAO {
 	}
 	
 	public StoreVO getStore(StoreVO vo) {
-		Object[] args = { vo.getStoreNum() };
-		return jdbcTemplate.queryForObject(Store_Get, args, new StoreRowMapper());
+		try {
+			Object[] args = { vo.getStoreNum() };
+			return jdbcTemplate.queryForObject(Store_Get, args, new StoreRowMapper());
+		}
+		catch(Exception e){
+			System.out.println("예외발생");
+			return null;
+		}
 	}
 	
 	public List<StoreVO> getStoreList(StoreVO vo) {
 		return jdbcTemplate.query(Store_List, new StoreRowMapper());
+	}
+	
+	public StoreVO loginStore(StoreVO vo) {
+		Object[] args = { vo.getStoreId(), vo.getStorePw() };
+		return jdbcTemplate.queryForObject(Store_Login, args, new StoreRowMapper());
 	}
 }
 

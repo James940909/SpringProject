@@ -15,6 +15,7 @@ public class MenuDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate; 
 	
+	// ±âº» CRUD
 	private final String Menu_Insert = "INSERT INTO MENU(menuName, menuPrice) VALUES(?,?)";
 	private final String Menu_Update= "UPDATE MENU SET menuName=?, menuPrice=? WHERE menuNum=?";
 	private final String Menu_Delete= "DELETE MENU WHERE menuNum=?";
