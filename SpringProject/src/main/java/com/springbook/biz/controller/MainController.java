@@ -1,14 +1,17 @@
 package com.springbook.biz.controller;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.springbook.biz.WebCrawling;
 import com.springbook.biz.store.StoreService;
 import com.springbook.biz.store.StoreServiceImpl;
 import com.springbook.biz.store.StoreVO;
@@ -20,6 +23,8 @@ public class MainController {
 	StoreService storeService;
 	@Autowired
 	StoreServiceImpl storeServiceImpl;
+	@Autowired
+	WebCrawling webCrawling;
 	
 	// 로그인 화면으로 이동
 	@RequestMapping(value = "/login.do", method=RequestMethod.GET)
@@ -38,8 +43,9 @@ public class MainController {
 		
 		if ( store != null) {
 			System.out.println("로그인 성공");
-			System.out.println(store.toString());
+			session.setAttribute("store", store);
 			session.setAttribute("storeName", store.getStoreName());
+			session.setAttribute("storeNum", store.getStoreNum());
 			return "mainPage.do";
 		}
 
@@ -73,6 +79,24 @@ public class MainController {
 		return "index.jsp";
 	}
 	
+	// 뉴스페이지
+	@RequestMapping(value = "/newsPage.do")
+	public String newsPage(Model model) {
+		
+		String naverNewUrl = "https://news.naver.com/main/list.naver?mode=LS2D&mid=shm&sid1=103&sid2=238";
+		
+		ArrayList<String> title = webCrawling.newsTitle(naverNewUrl);
+		ArrayList<String> content = webCrawling.newsContent(naverNewUrl);
+		ArrayList<String> img = webCrawling.newsImg(naverNewUrl);
+		ArrayList<String> url = webCrawling.newsUrl(naverNewUrl);
+		
+		model.addAttribute("title", title);
+		model.addAttribute("content", content);
+		model.addAttribute("img", img);
+		model.addAttribute("url", url);
+		
+		return "naverNews.jsp";
+	}
 	
 	
 }

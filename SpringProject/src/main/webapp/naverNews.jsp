@@ -13,19 +13,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>요기요 Center</title>
 
-    <!-- Custom fonts for this template -->
+    <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -47,57 +44,35 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    
+                    
                     <!-- Page Middle -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">게시판</h1>
-                        <a href="insertBoard.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i>게시물 등록</a>
+                        <h1 class="h3 mb-0 text-gray-800">뉴스 - 생활/문화  by Naver</h1>
                     </div>
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">게시물</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>제목</th>
-                                            <th>내용</th>
-                                            <th>이름</th>
-                                            <th>게시일</th>
-                                            <th>비고</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<c:forEach var="boardList" items="${boardList}">
-                                    		<tr>
-	                                            <td>${boardList.boardNum}</td>
-	                                            <td>${boardList.boardTitle}</td>
-    	                                        <td><a href="getBoard.do?boardNum=${boardList.boardNum}">${boardList.boardContent}</a></td>
-        	                                    <td>${boardList.boardWriter}</td>
-            	                                <td>${boardList.boardDate}</td>
-            	                                <td>
-            	                                <c:if test="${boardList.store_Num == sessionStoreNum || sessionStoreName == '관리자'}">
-            	                                	<a href="updateBoard.jsp?boardTitle=${boardList.boardTitle}&boardContent=${boardList.boardContent}&boardWriter=${boardList.boardWriter}&boardNum=${boardList.boardNum}"
-														class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-														class="fas fa-download fa-sm text-white-50"></i>수정</a> <a
-														href="deleteBoard.do?boardNum=${boardList.boardNum}"
-														class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-														class="fas fa-download fa-sm text-white-50"></i>삭제</a>
-            	                                </c:if>
-            	                                </td>
-                                        	</tr>
-                                    	</c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <!-- Content Row -->
+                    <div class="row">
+                        <c:forEach var="t" items="${title}" varStatus="status" begin="0" end="10">
+                        		<div class="col-lg-6 mb-4">
+                           			<!-- Illustrations -->
+                            			<div class="card shadow mb-4">
+                                			<div class="card-header py-3">
+                                    			<h6 class="m-0 font-weight-bold text-primary">${title[status.index]}</h6>
+                                			</div>
+                                			<div class="card-body">
+                                    			<div class="text-center">
+                                        			<a href="${url[status.index]}"><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                            		src="${img[status.index]}" alt="..."></a>
+                                    			</div>
+                                    			<p>${content[status.index]}</p>
+                                			</div>
+                            			</div>
+                        		</div>
+                        </c:forEach>
                     </div>
-
+                    
+                    
                 </div>
                 <!-- /.container-fluid -->
 
@@ -108,7 +83,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
             </footer>
@@ -156,11 +131,11 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

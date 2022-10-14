@@ -45,27 +45,30 @@
                                             placeholder="ID">
                                     </div>
                                     <div class="col-sm-6">
-                                        <a href="#" class="btn btn-primary btn-icon-split">
+                                        <a href="#" class="btn btn-primary btn-user btn-block">
                                         	<span class="icon text-white-50">
                                            		<i class="fas fa-flag"></i>
                                         	</span>
-                                        	<span class="text">중복 확인</span>
+                                        	<span class="text">&nbsp;&nbsp;&nbsp;중복 확인</span>
                                     	</a>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            name="storePw" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
+                                <div class="form-group">
+                                	<input type="password" class="form-control form-control-user"
+                                      name="storePw" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" name="storeEmail"
-                                        placeholder="Email Address">
+                                    <select class="form-control" name="storeCategory">
+                                    	<option selected>업종을 선택해주세요.</option>
+                                    	<option>--------------------------</option>
+                                    	<option value="치킨">치킨</option>
+                                    	<option value="피자/양식">피자/양식</option>
+                                    	<option value="중국집">중국집</option>
+                                    	<option value="한식">한식</option>
+                                    	<option value="일식/돈까스">일식/돈까스</option>
+                                    	<option value="족발/보쌈">족발/보쌈</option>
+                                    	<option value="분식">분식</option>
+                                    </select>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">

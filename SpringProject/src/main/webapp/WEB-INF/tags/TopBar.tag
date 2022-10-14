@@ -12,21 +12,6 @@
 				<i class="fa fa-bars"></i>
 			</button>
 
-			<!-- Topbar Search -->
-			<form
-				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-				<div class="input-group">
-					<input type="text" class="form-control bg-light border-0 small"
-						placeholder="Search for..." aria-label="Search"
-						aria-describedby="basic-addon2">
-					<div class="input-group-append">
-						<button class="btn btn-primary" type="button">
-							<i class="fas fa-search fa-sm"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-
 			<!-- Topbar Navbar -->
 			<ul class="navbar-nav ml-auto">
 
@@ -68,15 +53,10 @@
 						class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 						aria-labelledby="userDropdown">
 						<a class="dropdown-item" href="#"> <i
-							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-						</a> <a class="dropdown-item" href="#"> <i
-							class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-						</a> <a class="dropdown-item" href="#"> <i
-							class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity
-							Log
+							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> My Store
 						</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#" data-toggle="modal"
+						<a class="dropdown-item" href="logout.do" data-toggle="modal"
 							data-target="#logoutModal"> <i
 							class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 							Logout
@@ -88,6 +68,7 @@
 		</nav>
 		<!-- End of Topbar -->
 	</c:when>
+	
 	<c:when test="${ storeName==null }">
 		<!-- Topbar -->
 		<nav
@@ -98,21 +79,6 @@
 				class="btn btn-link d-md-none rounded-circle mr-3">
 				<i class="fa fa-bars"></i>
 			</button>
-
-			<!-- Topbar Search -->
-			<form
-				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-				<div class="input-group">
-					<input type="text" class="form-control bg-light border-0 small"
-						placeholder="Search for..." aria-label="Search"
-						aria-describedby="basic-addon2">
-					<div class="input-group-append">
-						<button class="btn btn-primary" type="button">
-							<i class="fas fa-search fa-sm"></i>
-						</button>
-					</div>
-				</div>
-			</form>
 
 			<!-- Topbar Navbar -->
 			<ul class="navbar-nav ml-auto">
@@ -154,14 +120,14 @@
 					<div
 						class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 						aria-labelledby="userDropdown">
-						<a class="dropdown-item" href="#"> <i
+						<a class="dropdown-item" href="login.jsp"> <i
 							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Login
 						</a> 
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#" data-toggle="modal"
 							data-target="#logoutModal"> <i
 							class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-							회원가입
+							Sign Up
 						</a>
 					</div></li>
 
@@ -171,3 +137,43 @@
 		<!-- End of Topbar -->
 	</c:when>
 </c:choose>
+
+	<!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body"><h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5></div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+                    <a class="btn btn-primary" href="logout.do">로그아웃</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Login Modal-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body"><h5 class="modal-title" id="exampleModalLabel">로그인 후, 이용해주세요!</h5></div>
+                <div class="modal-footer">
+                	<a class="btn btn-primary" href="login.jsp">로그인</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>

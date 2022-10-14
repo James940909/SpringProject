@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sideBar" tagdir="/WEB-INF/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,49 +48,49 @@
 
                     <!-- Page Middle -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">게시판</h1>
-                        <a href="insertBoard.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i>게시물 등록</a>
+                        <h1 class="h3 mb-0 text-gray-800">점포 관리</h1>
                     </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">게시물</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">점포 목록</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
-                                            <th>제목</th>
-                                            <th>내용</th>
-                                            <th>이름</th>
-                                            <th>게시일</th>
+                                            <th>점포 이름</th>
+                                            <th>ID</th>
+                                            <th>업종</th>
+                                            <th>연락처</th>
+                                            <th>주소</th>
+                                            <th>가입일</th>
                                             <th>비고</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    	<c:forEach var="boardList" items="${boardList}">
-                                    		<tr>
-	                                            <td>${boardList.boardNum}</td>
-	                                            <td>${boardList.boardTitle}</td>
-    	                                        <td><a href="getBoard.do?boardNum=${boardList.boardNum}">${boardList.boardContent}</a></td>
-        	                                    <td>${boardList.boardWriter}</td>
-            	                                <td>${boardList.boardDate}</td>
-            	                                <td>
-            	                                <c:if test="${boardList.store_Num == sessionStoreNum || sessionStoreName == '관리자'}">
-            	                                	<a href="updateBoard.jsp?boardTitle=${boardList.boardTitle}&boardContent=${boardList.boardContent}&boardWriter=${boardList.boardWriter}&boardNum=${boardList.boardNum}"
-														class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-														class="fas fa-download fa-sm text-white-50"></i>수정</a> <a
-														href="deleteBoard.do?boardNum=${boardList.boardNum}"
-														class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-														class="fas fa-download fa-sm text-white-50"></i>삭제</a>
-            	                                </c:if>
-            	                                </td>
-                                        	</tr>
-                                    	</c:forEach>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>2011/04/25</td>
+                                            <td>2011/04/25</td>
+                                            <td>2011/04/25</td>
+                                            <td><a href="insertBoard.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i>점포 삭제</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>2011/07/25</td>
+                                            <td>2011/07/25</td>
+                                            <td>2011/07/25</td>
+                                            <td><a href="insertBoard.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i>점포 삭제</a></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

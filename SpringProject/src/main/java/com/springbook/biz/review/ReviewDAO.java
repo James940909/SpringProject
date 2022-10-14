@@ -16,20 +16,20 @@ public class ReviewDAO {
 	private JdbcTemplate jdbcTemplate; 
 	
 	// ±âº» CRUD
-	private final String Review_Insert = "INSERT INTO REVIEW(reviewWriter, reviewScore, reviewContent) VALUES(?,?,?)";
-	private final String Review_Update= "UPDATE REVIEW SET reviewWriter=?, reviewScore=?, reviewContent=? WHERE reviewNum=?";
+	private final String Review_Insert = "INSERT INTO REVIEW(reviewWriter, reviewScore, reviewContent, r_img) VALUES(?,?,?,?)";
+	private final String Review_Update= "UPDATE REVIEW SET reviewWriter=?, reviewScore=?, reviewContent=?, r_img=? WHERE reviewNum=?";
 	private final String Review_Delete= "DELETE REVIEW WHERE reviewNum=?";
 	private final String Review_Get= "SELECT * FROM REVIEW WHERE reviewNum=?";
 	private final String Review_List= "SELECT * FROM REVIEW ORDER BY reviewNum DESC";
 	
 	
 	public void insertReview(ReviewVO vo) {
-		Object[] args = { vo.getReviewWriter(), vo.getReviewScore(), vo.getReviewContent() };
+		Object[] args = { vo.getReviewWriter(), vo.getReviewScore(), vo.getReviewContent(), vo.getR_img() };
 		jdbcTemplate.update(Review_Insert, args);
 	}
 	
 	public void updateReview(ReviewVO vo) {
-		Object[] args = { vo.getReviewWriter(), vo.getReviewScore(), vo.getReviewContent(), vo.getReviewNum() };
+		Object[] args = { vo.getReviewWriter(), vo.getReviewScore(), vo.getReviewContent(), vo.getR_img(), vo.getReviewNum() };
 		jdbcTemplate.update(Review_Update, args);
 	}
 	
@@ -59,6 +59,7 @@ class ReviewRowMapper implements RowMapper<ReviewVO> {
 		review.setReviewContent(rs.getString("reviewContent"));
 		review.setReviewDate(rs.getString("reviewDate"));
 		review.setStore_Num(rs.getInt("store_Num"));
+		review.setR_img(rs.getString("r_img"));
 		return review;
 	}
 	

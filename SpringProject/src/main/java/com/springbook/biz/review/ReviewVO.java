@@ -1,5 +1,6 @@
 package com.springbook.biz.review;
 
+import org.springframework.web.multipart.MultipartFile;
 
 public class ReviewVO {
 	
@@ -9,6 +10,9 @@ public class ReviewVO {
 	private String reviewContent;
 	private String reviewDate;
 	private int store_Num;
+	private String r_img;
+	private MultipartFile reviewImgUpload;
+	
 	public int getReviewNum() {
 		return reviewNum;
 	}
@@ -45,12 +49,25 @@ public class ReviewVO {
 	public void setStore_Num(int store_Num) {
 		this.store_Num = store_Num;
 	}
+	public String getR_img() {
+		return r_img;
+	}
+	public void setR_img(String r_img) {
+		this.r_img = r_img;
+	}
+	public MultipartFile getReviewImgUpload() {
+		return reviewImgUpload;
+	}
+	public void setReviewImgUpload(MultipartFile reviewImgUpload) {
+		this.reviewImgUpload = reviewImgUpload;
+	}
+
 	@Override
 	public String toString() {
 		return "ReviewVO [reviewNum=" + reviewNum + ", reviewWriter=" + reviewWriter + ", reviewScore=" + reviewScore
-				+ ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", store_Num=" + store_Num + "]";
+				+ ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", store_Num=" + store_Num
+				+ ", r_img=" + r_img + ", reviewImgUpload=" + reviewImgUpload + "]";
 	}
-	
 	
 	
 }

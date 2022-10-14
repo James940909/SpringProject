@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sideBar" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,12 +45,21 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
+                    <c:choose>
+                    
+                    	<c:when test="${ storeName!=null }">
+                    		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        		<h1 class="h3 mb-0 text-gray-800">${ storeName }님, 환영합니다!</h1>
+                    		</div>
+                    	</c:when>
+                    	
+                    	<c:when test="${ storeName==null }">
+                    		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        		<h1 class="h3 mb-0 text-gray-800">로그인 후, 이용바랍니다!</h1>
+                    		</div>
+                    	</c:when>
+                    	
+                    </c:choose>
 
                     <!-- Content Row -->
                     <div class="row">
@@ -57,19 +67,25 @@
                             <!-- Illustrations -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">매출 정보를 한번에!</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                                             src="img/undraw_posting_photo.svg" alt="...">
                                     </div>
-                                    <p>Add some quality, svg illustrations to your project courtesy of <a
-                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                        constantly updated collection of beautiful svg images that you can use
-                                        completely free and without attribution!</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                        unDraw &rarr;</a>
+                                    <p></p>
+                                    <c:choose>
+                                    	<c:when test="${storeName != null}">
+                                    		<a href="getStore.jsp">매출 정보 확인하기
+                                         &rarr;</a>
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<a href="getStore.jsp" data-toggle="modal"
+							data-target="#loginModal">매출 정보 확인하기
+                                         &rarr;</a>
+                                    	</c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>
@@ -77,19 +93,25 @@
                             <!-- Illustrations -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">편리한 리뷰 확인과 메뉴 관리!</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                                             src="img/undraw_posting_photo.svg" alt="...">
                                     </div>
-                                    <p>Add some quality, svg illustrations to your project courtesy of <a
-                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                        constantly updated collection of beautiful svg images that you can use
-                                        completely free and without attribution!</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                        unDraw &rarr;</a>
+                                    <p></p>
+									<c:choose>
+										<c:when test="${storeName != null}">
+											<a href="getMenuList.jsp">메뉴 관리하기
+                                         &rarr;</a>
+										</c:when>
+										<c:otherwise>
+											<a href="getMenuList.jsp" data-toggle="modal"
+							data-target="#loginModal">메뉴 관리하기
+                                         &rarr;</a>
+										</c:otherwise>
+									</c:choose>                                    
                                 </div>
                             </div>
                         </div>
@@ -121,26 +143,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

@@ -16,20 +16,20 @@ public class MenuDAO {
 	private JdbcTemplate jdbcTemplate; 
 	
 	// ±âº» CRUD
-	private final String Menu_Insert = "INSERT INTO MENU(menuName, menuPrice) VALUES(?,?)";
-	private final String Menu_Update= "UPDATE MENU SET menuName=?, menuPrice=? WHERE menuNum=?";
-	private final String Menu_Delete= "DELETE MENU WHERE menuNum=?";
+	private final String Menu_Insert = "INSERT INTO MENU(menuName, menuPrice, store_Num, m_img) VALUES(?,?,?,?)";
+	private final String Menu_Update= "UPDATE MENU SET menuName=?, menuPrice=?, m_img=? WHERE menuNum=?";
+	private final String Menu_Delete= "DELETE FROM MENU WHERE menuNum=?";
 	private final String Menu_Get= "SELECT * FROM MENU WHERE menuNum=?";
-	private final String Menu_List= "SELECT * FROM MENU ORDER BY menuNum DESC";
+	private final String Menu_List= "SELECT * FROM MENU WHERE store_Num=?";
 	
 	
 	public void insertMenu(MenuVO vo) {
-		Object[] args = { vo.getMenuName(), vo.getMenuPrice() };
+		Object[] args = { vo.getMenuName(), vo.getMenuPrice(), vo.getStore_Num(), vo.getM_img() };
 		jdbcTemplate.update(Menu_Insert, args);
 	}
 	
 	public void updateMenu(MenuVO vo) {
-		Object[] args = { vo.getMenuName(), vo.getMenuPrice(), vo.getMenuNum() };
+		Object[] args = { vo.getMenuName(), vo.getMenuPrice(), vo.getM_img(), vo.getMenuNum() };
 		jdbcTemplate.update(Menu_Update, args);
 	}
 	
@@ -44,7 +44,8 @@ public class MenuDAO {
 	}
 	
 	public List<MenuVO> getMenuList(MenuVO vo) {
-		return jdbcTemplate.query(Menu_List, new MenuRowMapper());
+		Object[] args = { vo.getStore_Num() };
+		return jdbcTemplate.query(Menu_List, args, new MenuRowMapper());
 	}
 }
 
@@ -57,6 +58,7 @@ class MenuRowMapper implements RowMapper<MenuVO> {
 		menu.setMenuName(rs.getString("menuName"));
 		menu.setMenuPrice(rs.getInt("menuPrice"));
 		menu.setStore_Num(rs.getInt("store_Num"));
+		menu.setM_img(rs.getString("m_img"));
 		return menu;
 	}
 	

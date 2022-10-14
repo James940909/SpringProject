@@ -16,9 +16,9 @@ public class StoreDAO {
 	private JdbcTemplate jdbcTemplate; 
 	
 	// ±âº» CRUD
-	private final String Store_Insert = "INSERT INTO STORE(storeNum, storeId, storePw, storeName, storeEmail, storePhone, storeAddress, signUpDate) VALUES(?,?,?,?,?,?,?,?)";
-	private final String Store_Update= "UPDATE STORE SET storePw=?, storeName=?, storeEmail=?, storePhone=?, storeAddress=? WHERE storeNum=?";
-	private final String Store_Delete= "DELETE STORE WHERE storeNum=?";
+	private final String Store_Insert = "INSERT INTO STORE(storeNum, storeId, storePw, storeName, storeCategory, storePhone, storeAddress, signUpDate) VALUES(?,?,?,?,?,?,?,?)";
+	private final String Store_Update= "UPDATE STORE SET storePw=?, storeName=?, storeCategory=?, storePhone=?, storeAddress=? WHERE storeNum=?";
+	private final String Store_Delete= "DELETE FROM STORE WHERE storeNum=?";
 	private final String Store_Get= "SELECT * FROM STORE WHERE storeNum=?";
 	private final String Store_List= "SELECT * FROM STORE ORDER BY storeNum DESC";
 	
@@ -27,12 +27,12 @@ public class StoreDAO {
 	
 	
 	public void insertStore(StoreVO vo) {
-		Object[] args = { vo.getStoreNum(), vo.getStoreId(), vo.getStorePw(), vo.getStoreName(), vo.getStoreEmail(), vo.getStorePhone(), vo.getStoreAddress(), vo.getSignUpDate() };
+		Object[] args = { vo.getStoreNum(), vo.getStoreId(), vo.getStorePw(), vo.getStoreName(), vo.getStoreCategory(), vo.getStorePhone(), vo.getStoreAddress(), vo.getSignUpDate() };
 		jdbcTemplate.update(Store_Insert, args);
 	}
 	
 	public void updateStore(StoreVO vo) {
-		Object[] args = { vo.getStorePw(), vo.getStoreName(), vo.getStoreEmail(), vo.getStorePhone(), vo.getStoreAddress(), vo.getStoreNum() };
+		Object[] args = { vo.getStorePw(), vo.getStoreName(), vo.getStoreCategory(), vo.getStorePhone(), vo.getStoreAddress(), vo.getStoreNum() };
 		jdbcTemplate.update(Store_Update, args);
 	}
 	
@@ -71,7 +71,7 @@ class StoreRowMapper implements RowMapper<StoreVO> {
 		store.setStoreId(rs.getString("storeId"));
 		store.setStorePw(rs.getString("storePw"));
 		store.setStoreName(rs.getString("storeName"));
-		store.setStoreEmail(rs.getString("storeEmail"));
+		store.setStoreCategory(rs.getString("storeCategory"));
 		store.setStorePhone(rs.getString("storePhone"));
 		store.setStoreAddress(rs.getString("storeAddress"));
 		store.setSignUpDate(rs.getString("signUpDate"));

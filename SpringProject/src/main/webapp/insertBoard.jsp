@@ -50,24 +50,28 @@
 					<!-- Page Middle -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">게시물 등록</h1>
 					</div>
 
 					<!-- Content Row -->
-					<div class="col-lg-6 mb-4">
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">${board.boardTitle}</h6>
-                                </div>
-                                <div class="card-body" style="height:400px;">
-                                    <div class="text-center">
-                                    </div>
-                                    <p>${board.boardContent}</p>
-                                </div>
-                                <p align="right">작성자: ${board.boardWriter}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                                <p align="right">게시일: ${board.boardDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                            </div>
-                  	</div>
+					<div class="row">
+						<div>
+							<!-- Illustrations -->
+							<form action="insertBoard.do" method="post">
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<input type="text" name="boardTitle" placeholder="제목을 입력하세요."  style="width:100%;" class="form-control form-control-user">
+									</div>
+									<div class="card-body">
+										<textarea rows="20%" cols="100%" name="boardContent" class="form-control form-control-user" placeholder="내용을 입력하세요."></textarea>	
+									</div>
+								</div>
+								<input type="submit" value="게시글 등록"
+									class="btn btn-primary btn-user btn-block">
+							</form>
+							<!-- Illustrations -->
+						</div>
+					</div>
 				</div>
 				<!-- /.container-fluid -->
 

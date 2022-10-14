@@ -7,7 +7,7 @@ public class StoreVO {
 	private String storeId;
 	private String storePw;
 	private String storeName;
-	private String storeEmail;
+	private String storeCategory;
 	private String storePhone;
 	private String storeAddress;
 	private String signUpDate;
@@ -35,11 +35,11 @@ public class StoreVO {
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
 	}
-	public String getStoreEmail() {
-		return storeEmail;
+	public String getStoreCategory() {
+		return storeCategory;
 	}
-	public void setStoreEmail(String storeEmail) {
-		this.storeEmail = storeEmail;
+	public void setStoreCategory(String storeCategory) {
+		this.storeCategory = storeCategory;
 	}
 	public String getStorePhone() {
 		return storePhone;
@@ -62,11 +62,9 @@ public class StoreVO {
 	@Override
 	public String toString() {
 		return "StoreVO [storeNum=" + storeNum + ", storeId=" + storeId + ", storePw=" + storePw + ", storeName="
-				+ storeName + ", storeEmail=" + storeEmail + ", storePhone=" + storePhone + ", storeAddress="
+				+ storeName + ", storeCategory=" + storeCategory + ", storePhone=" + storePhone + ", storeAddress="
 				+ storeAddress + ", signUpDate=" + signUpDate + "]";
 	}
-	
-	
 	
 	
 }
