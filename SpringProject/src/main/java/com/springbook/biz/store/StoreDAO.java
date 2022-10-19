@@ -18,7 +18,7 @@ public class StoreDAO {
 	// 기본 CRUD
 	private final String Store_Insert = "INSERT INTO STORE(storeNum, storeId, storePw, storeName, storeCategory, storePhone, storeAddress, signUpDate) VALUES(?,?,?,?,?,?,?,?)";
 	private final String Store_Update= "UPDATE STORE SET storePw=?, storeName=?, storeCategory=?, storePhone=?, storeAddress=? WHERE storeNum=?";
-	private final String Store_Delete= "DELETE FROM STORE WHERE storeNum=?";
+	private final String Store_Delete= "DELETE FROM STORE WHERE storeNum=? AND storePw=?";
 	private final String Store_Get= "SELECT * FROM STORE WHERE storeNum=?";
 	private final String Store_List= "SELECT * FROM STORE ORDER BY storeNum DESC";
 	
@@ -37,19 +37,13 @@ public class StoreDAO {
 	}
 	
 	public void deleteStore(StoreVO vo) {
-		Object[] args = { vo.getStoreNum() };
+		Object[] args = { vo.getStoreNum(), vo.getStorePw() };
 		jdbcTemplate.update(Store_Delete, args);
 	}
 	
 	public StoreVO getStore(StoreVO vo) {
-		try {
-			Object[] args = { vo.getStoreNum() };
-			return jdbcTemplate.queryForObject(Store_Get, args, new StoreRowMapper());
-		}
-		catch(Exception e){
-			System.out.println("예외발생");
-			return null;
-		}
+		Object[] args = { vo.getStoreNum() };
+		return jdbcTemplate.queryForObject(Store_Get, args, new StoreRowMapper());
 	}
 	
 	public List<StoreVO> getStoreList(StoreVO vo) {

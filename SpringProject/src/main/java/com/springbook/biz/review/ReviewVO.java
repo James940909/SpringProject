@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ReviewVO {
 	
 	private int reviewNum;
-	private String reviewWriter;
+	private String reviewMenu;
 	private float reviewScore;
 	private String reviewContent;
 	private String reviewDate;
@@ -19,11 +19,11 @@ public class ReviewVO {
 	public void setReviewNum(int reviewNum) {
 		this.reviewNum = reviewNum;
 	}
-	public String getReviewWriter() {
-		return reviewWriter;
+	public String getReviewMenu() {
+		return reviewMenu;
 	}
-	public void setReviewWriter(String reviewWriter) {
-		this.reviewWriter = reviewWriter;
+	public void setReviewMenu(String reviewMenu) {
+		this.reviewMenu = reviewMenu;
 	}
 	public float getReviewScore() {
 		return reviewScore;
@@ -64,7 +64,7 @@ public class ReviewVO {
 
 	@Override
 	public String toString() {
-		return "ReviewVO [reviewNum=" + reviewNum + ", reviewWriter=" + reviewWriter + ", reviewScore=" + reviewScore
+		return "ReviewVO [reviewNum=" + reviewNum + ", reviewMenu=" + reviewMenu + ", reviewScore=" + reviewScore
 				+ ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", store_Num=" + store_Num
 				+ ", r_img=" + r_img + ", reviewImgUpload=" + reviewImgUpload + "]";
 	}

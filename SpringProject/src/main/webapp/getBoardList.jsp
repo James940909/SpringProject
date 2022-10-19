@@ -86,6 +86,7 @@
 														class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 														class="fas fa-download fa-sm text-white-50"></i>수정</a> <a
 														href="deleteBoard.do?boardNum=${boardList.boardNum}"
+														onclick="return confirm('정말 삭제하시겠습니까?');"
 														class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 														class="fas fa-download fa-sm text-white-50"></i>삭제</a>
             	                                </c:if>

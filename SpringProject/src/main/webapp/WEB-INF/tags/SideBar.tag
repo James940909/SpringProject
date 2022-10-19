@@ -41,8 +41,8 @@
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">My Store</h6>
-						<a class="collapse-item" href="getStore.jsp">매출 정보</a>
-						<a class="collapse-item" href="getReviewList.jsp">리뷰</a>
+						<a class="collapse-item" href="getStore.do">매출 정보</a>
+						<a class="collapse-item" href="getReviewList.do">리뷰</a>
 						<a class="collapse-item" href="getMenuList.do">메뉴</a>
 					</div>
 				</div></li>
@@ -80,7 +80,7 @@
 						<h6 class="collapse-header">Logout</h6>
 						<a class="collapse-item" href="logout.do" data-toggle="modal"
 							data-target="#logoutModal">로그아웃</a> <a
-							class="collapse-item" href="signUp.jsp">회원정보변경</a>
+							class="collapse-item" href="updateSelectPage.jsp">회원정보변경</a>
 						<div class="collapse-divider"></div>
 					</div>
 				</div></li>
@@ -256,7 +256,7 @@
 						<h6 class="collapse-header">Logout</h6>
 						<a class="collapse-item" href="logout.do" data-toggle="modal"
 							data-target="#logoutModal">로그아웃</a> <a
-							class="collapse-item" href="signUp.jsp">회원정보변경</a>
+							class="collapse-item" href="updateSelectPage.jsp">회원정보변경</a>
 						<div class="collapse-divider"></div>
 					</div>
 				</div></li>
@@ -267,7 +267,7 @@
 			<!-- Heading -->
 			<div class="sidebar-heading">관리자 전용</div>
 			
-			<li class="nav-item"><a class="nav-link" href="adminPage.jsp"> <i
+			<li class="nav-item"><a class="nav-link" href="getStoreList.do"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>점포 관리</span></a></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->

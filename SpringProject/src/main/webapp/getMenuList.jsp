@@ -76,31 +76,7 @@
 														src="img/${fn:split(menuList.m_img,'\\')[10]}" alt="..."
 														onerror="this.src='img/default.png'">
 												</div>
-												<!-- Delete Modal-->
-												<div class="modal fade" id="deleteModal" tabindex="-1"
-													role="dialog" aria-labelledby="exampleModalLabel"
-													aria-hidden="true">
-													<div class="modal-dialog" role="document">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title" id="exampleModalLabel"></h5>
-																<button class="close" type="button" data-dismiss="modal"
-																	aria-label="Close">
-																	<span aria-hidden="true">×</span>
-																</button>
-															</div>
-															<div class="modal-body">
-																<h5 class="modal-title" id="exampleModalLabel">정말
-																	삭제하시겠습니까?</h5>
-															</div>
-															<div class="modal-footer">
-																<a class="btn btn-primary" href="deleteMenu.do?menuNum=${menuList.menuNum}">삭제</a>
-																<button class="btn btn-secondary" type="button"
-																	data-dismiss="modal">취소</button>
-															</div>
-														</div>
-													</div>
-												</div>
+														
 												<p style="text-align: left;">￦ ${menuList.menuPrice}</p>
 												<p style="text-align: left;">menuNum: ${menuList.menuNum}</p>
 												<input type="hidden" name="menuNum" value="${menuList.menuNum}">
@@ -109,6 +85,7 @@
 														class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 														class="fas fa-download fa-sm text-white-50"></i>수정</a> <a
 														href="deleteMenu.do?menuNum=${menuList.menuNum}"
+														onclick="return confirm('정말 삭제하시겠습니까?');"
 														class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 														class="fas fa-download fa-sm text-white-50"></i>삭제</a>
 												</p>

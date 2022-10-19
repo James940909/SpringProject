@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sideBar" tagdir="/WEB-INF/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,108 +53,45 @@
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">리뷰</h1>
-						<a href="insertReview.jsp"
+						<a href="insertReview.do"
 							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 							class="fas fa-download fa-sm text-white-50"></i>리뷰 등록</a>
 					</div>
 
 					<!-- Content Row -->
 					<div class="row">
+						<c:forEach var="reviewList" items="${reviewList}">
 						<div class="col-lg-6 mb-4">
 							<!-- Illustrations -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">메뉴들 넣자&nbsp;&nbsp;&nbsp;&nbsp;★ 점수 넣자</h6>
+									<h6 class="m-0 font-weight-bold text-primary">${reviewList.reviewMenu}&nbsp;&nbsp;&nbsp;&nbsp;★ ${reviewList.reviewScore}</h6>
 								</div>
 								<div class="card-body">
 									<div class="text-center">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-											style="width: 25rem;" src="img/undraw_posting_photo.svg"
-											alt="...">
+											style="width: 25rem; height: 15rem;" src="img/${fn:split(reviewList.r_img,'\\')[10]}"
+											alt="..." onerror="this.src='img/default.png'">
 									</div>
-									<p>내용넣자!</p>
+									<p>${reviewList.reviewContent}</p>
 									<div
 										class="d-sm-flex align-items-center justify-content-between mb-4">
 										<a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a><a></a>
-										<a href="insertReview.jsp"
+										<a href="updateReview.do?reviewNum=${reviewList.reviewNum}"
 											class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 											class="fas fa-download fa-sm text-white-50"></i>수정</a>
-										<a href="insertReview.jsp"
+										<a href="deleteReview.do?reviewNum=${reviewList.reviewNum}"
+											onclick="return confirm('정말 삭제하시겠습니까?');"
 											class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 											class="fas fa-download fa-sm text-white-50"></i>삭제</a>
 									</div>
+									<p align="right">Date: ${reviewList.reviewDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6 mb-4">
-							<!-- Illustrations -->
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-								</div>
-								<div class="card-body">
-									<div class="text-center">
-										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-											style="width: 25rem;" src="img/undraw_posting_photo.svg"
-											alt="...">
-									</div>
-									<p>
-										Add some quality, svg illustrations to your project courtesy
-										of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>,
-										a constantly updated collection of beautiful svg images that
-										you can use completely free and without attribution!
-									</p>
-									<a target="_blank" rel="nofollow" href="https://undraw.co/">Browse
-										Illustrations on unDraw &rarr;</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 mb-4">
-							<!-- Illustrations -->
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-								</div>
-								<div class="card-body">
-									<div class="text-center">
-										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-											style="width: 25rem;" src="img/undraw_posting_photo.svg"
-											alt="...">
-									</div>
-									<p>
-										Add some quality, svg illustrations to your project courtesy
-										of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>,
-										a constantly updated collection of beautiful svg images that
-										you can use completely free and without attribution!
-									</p>
-									<a target="_blank" rel="nofollow" href="https://undraw.co/">Browse
-										Illustrations on unDraw &rarr;</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 mb-4">
-							<!-- Illustrations -->
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-								</div>
-								<div class="card-body">
-									<div class="text-center">
-										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-											style="width: 25rem;" src="img/undraw_posting_photo.svg"
-											alt="...">
-									</div>
-									<p>
-										Add some quality, svg illustrations to your project courtesy
-										of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>,
-										a constantly updated collection of beautiful svg images that
-										you can use completely free and without attribution!
-									</p>
-									<a target="_blank" rel="nofollow" href="https://undraw.co/">Browse
-										Illustrations on unDraw &rarr;</a>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
+						
+						
 					</div>
 				</div>
 				<!-- /.container-fluid -->
